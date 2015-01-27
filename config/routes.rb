@@ -1,9 +1,32 @@
-Rails.application.routes.draw do
-  get 'static_pages/home'
 
-  get 'static_pages/help'
-  get 'static_pages/about'
-  get 'static_pages/contact'
+Rails.application.routes.draw do
+  get 'users/new'
+
+# исправленная версия 
+# по адресу http://rails-3-2.railstutorial.org/book/filling_in_the_layout#sec-rails_routes
+# Взято оттуда что  вверху, но найдо в инете что в конце надо
+# ,  :via => :get 
+root to: 'static_pages#home'
+match '/signup',  to: 'users#new',              :via => :get
+match '/help',    to: 'static_pages#help',     :via => :get 
+match '/about',   to: 'static_pages#about',    :via => :get 
+match '/contact', to: 'static_pages#contact',  :via => :get
+
+
+# это было чуть позже, но видимо все-ткаи для рельсы 3.1
+# root  to: 'static_pages#home'
+ # match '/', to: 'static_pages#home', via: 'get'
+# match '/help',    to: 'static_pages#help',    via: 'get'
+# match '/about',   to: 'static_pages#about',   via: 'get'
+# match '/contact', to: 'static_pages#contact', via: 'get'
+
+# ==== это было раньше
+#  get 'static_pages/home'
+#  get 'static_pages/help'
+#  get 'static_pages/about'
+#  get 'static_pages/contact'
+
+# вводим маршруты 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
