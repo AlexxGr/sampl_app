@@ -11,7 +11,10 @@ class User < ActiveRecord::Base
 	before_save { email.downcase! } # это аналогично верхнему
 	# валидация наличия name атрибута + добавляем валидацию длины не больше 50 симоволов
 	validates :name, 	presence: true, length: { maximum:50 }
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	
+	# запрещает двойные точки aaa@foo..bar
+	VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i 
+						#/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   	validates :email, 	presence: true, format: { with: VALID_EMAIL_REGEX },
   						uniqueness: { case_sensitive: false }
   	# 				вместо	uniqueness: true	ставим { case_sensitive: false }
