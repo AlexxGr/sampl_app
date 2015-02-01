@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
-  get 'users/new'
+#get 'users/new'
+resources :users
+
 
 # исправленная версия 
 # по адресу http://rails-3-2.railstutorial.org/book/filling_in_the_layout#sec-rails_routes

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe "Static pages" do
-
+  # типа необходимо
+  include Rails.application.routes.url_helpers
+  
   subject { page }
 
   describe "Home page" do

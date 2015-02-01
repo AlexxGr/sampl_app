@@ -5,7 +5,13 @@
 
 
 /* universal */
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
+/* universal */
 html {  
   overflow-y: scroll;
 } 
@@ -43,7 +49,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -82,6 +88,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  
   a {
     color: #555;
     &:hover {
@@ -100,4 +107,12 @@ footer {
     }
   }
 }
-
+/* display: inline; */
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
