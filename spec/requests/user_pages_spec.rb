@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "User pages" do
-  include Rails.application.routes.url_helpers
+  
 
   subject { page }
 
@@ -19,4 +19,28 @@ describe "User pages" do
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
   end
+
+  describe "signup path" do 
+    before { visit signup_path}
+
+    let(:sumbit) { "Create my account" }
+
+    describe "with invalid information" do 
+      it "should not create a user" do 
+        expect { click_button sumbit }.not_to change(User, :count)
+      end
+    end
+
+    describe "with valid information" do 
+      before do 
+        fill_in "Name",           with: "Example user"
+        fill_in "Email",          with: "user@example.com"
+        fill_in "Password",       with: "foobar"
+        fill_in "Confirmation",   with: "foobar"
+      end
+      it "should create a user" do 
+        expect { click_button sumbit }.to change(User, :count).by(1)
+      end
+    end
+  end  
 end
