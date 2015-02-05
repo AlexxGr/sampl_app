@@ -2,14 +2,23 @@
 Rails.application.routes.draw do
 #get 'users/new'
 resources :users
-
-
+# Определяем маршурты для ресурса (контроллера) Sessions с помощью метода resource 
+# без действия редактирование (:edit) c помощью опции only:
+resource :sessions, only: [:new, :create, :destroy]
 # исправленная версия 
 # по адресу http://rails-3-2.railstutorial.org/book/filling_in_the_layout#sec-rails_routes
 # Взято оттуда что  вверху, но найдо в инете что в конце надо
 # ,  :via => :get 
 root to: 'static_pages#home'
-match '/signup',  to: 'users#new',              :via => :get
+match '/signup',  to: 'users#new',             via: :get
+# =============   добавим для ресурса sessions ================
+match '/signin',   to: 'sessions#new',         via: [:get]
+match '/signout',  to: 'sessions#destroy',     via: :delete
+# Разные способы записи 
+#     via: :get
+#     via: [:get] - тут может через запятную перчсилять :post, :get
+#     :via => :get - аналогично верхнему
+# =============================================================
 match '/help',    to: 'static_pages#help',     :via => :get 
 match '/about',   to: 'static_pages#about',    :via => :get 
 match '/contact', to: 'static_pages#contact',  :via => :get

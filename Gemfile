@@ -61,8 +61,8 @@ group :test do
 	gem 'selenium-webdriver'#, '2.35.1'
 	gem 'capybara', '2.2.0'
 	gem 'factory_girl_rails'#, '4.2.0'
-	# gem 'cucumber-rails', '1.3.0', :require => false
-	# gem 'database_cleaner', github: 'bmabey/database_cleaner'
+	gem 'cucumber-rails', :require => false#, '1.3.0', :require => false
+	gem 'database_cleaner', github: 'bmabey/database_cleaner'
 	# gem 'libnotify', '0.8.0'
 end
 
